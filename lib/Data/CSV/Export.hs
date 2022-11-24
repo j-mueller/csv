@@ -23,6 +23,7 @@ module Data.CSV.Export
     DecimalPoint (..),
     CSVConfig (..),
     germanCSVConfig,
+    defaultCSVConfig,
 
     -- ** Newtypes
     UTCTimeAsDateTime(..),
@@ -118,6 +119,9 @@ processCell CSVConfig {csvQuotationMark, csvDecimalPoint} =
 
 germanCSVConfig :: CSVConfig
 germanCSVConfig = CSVConfig {csvDelimiter = ";", csvDecimalPoint = DecimalComma, csvQuotationMark = Just "\""}
+
+defaultCSVConfig :: CSVConfig
+defaultCSVConfig = CSVConfig {csvDelimiter = ",", csvDecimalPoint = DecimalPoint, csvQuotationMark = Just "\""}
 
 mkLine :: CSVRow a => CSVConfig -> a -> Text
 mkLine config@CSVConfig{csvDelimiter} =
